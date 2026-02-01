@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "timestamp": 1769983429,
+    "models_compared": [
+      "phi3",
+      "llama3",
+      "gemma:2b"
+    ],
+    "analysis_model": "deepseek-v3.1:671b-cloud"
+  },
+  "summaries": [
+    {
+      "model": "phi3",
+      "timestamp": 1769983379,
+      "config": {
+        "max_tokens": 100,
+        "temperature": 0.7,
+        "max_retries": 2
+      },
+      "total_items": 6,
+      "successful": 6,
+      "failed": 0,
+      "success_rate": 1.0,
+      "performance": {
+        "avg_tokens_per_second": 41.98,
+        "min_tokens_per_second": 8.58,
+        "max_tokens_per_second": 55.28,
+        "avg_ttft": 0.098,
+        "min_ttft": 0.087,
+        "max_ttft": 0.145,
+        "avg_decode_tps": 44.29,
+        "avg_duration": 1.448,
+        "avg_output_tokens": 68.3,
+        "total_tokens_generated": 410,
+        "total_time_spent": 8.69
+      },
+      "category_breakdown": {
+        "Summarization": {
+          "count": 1,
+          "avg_tps": 49.4
+        },
+        "Extraction": {
+          "count": 1,
+          "avg_tps": 51.87
+        },
+        "Paradox": {
+          "count": 1,
+          "avg_tps": 55.28
+        },
+        "Constraint": {
+          "count": 1,
+          "avg_tps": 36.74
+        },
+        "Math Logic": {
+          "count": 1,
+          "avg_tps": 50.02
+        },
+        "Safety Injection": {
+          "count": 1,
+          "avg_tps": 8.58
+        }
+      }
+    },
+    {
+      "model": "llama3",
+      "timestamp": 1769983399,
+      "config": {
+        "max_tokens": 100,
+        "temperature": 0.7,
+        "max_retries": 2
+      },
+      "total_items": 6,
+      "successful": 6,
+      "failed": 0,
+      "success_rate": 1.0,
+      "performance": {
+        "avg_tokens_per_second": 15.69,
+        "min_tokens_per_second": 5.93,
+        "max_tokens_per_second": 24.14,
+        "avg_ttft": 0.264,
+        "min_ttft": 0.233,
+        "max_ttft": 0.364,
+        "avg_decode_tps": 18.21,
+        "avg_duration": 2.2,
+        "avg_output_tokens": 41.3,
+        "total_tokens_generated": 248,
+        "total_time_spent": 13.2
+      },
+      "category_breakdown": {
+        "Summarization": {
+          "count": 1,
+          "avg_tps": 18.79
+        },
+        "Extraction": {
+          "count": 1,
+          "avg_tps": 12.77
+        },
+        "Paradox": {
+          "count": 1,
+          "avg_tps": 24.14
+        },
+        "Constraint": {
+          "count": 1,
+          "avg_tps": 13.84
+        },
+        "Math Logic": {
+          "count": 1,
+          "avg_tps": 18.65
+        },
+        "Safety Injection": {
+          "count": 1,
+          "avg_tps": 5.93
+        }
+      }
+    },
+    {
+      "model": "gemma:2b",
+      "timestamp": 1769983406,
+      "config": {
+        "max_tokens": 100,
+        "temperature": 0.7,
+        "max_retries": 2
+      },
+      "total_items": 6,
+      "successful": 6,
+      "failed": 0,
+      "success_rate": 1.0,
+      "performance": {
+        "avg_tokens_per_second": 48.88,
+        "min_tokens_per_second": 39.23,
+        "max_tokens_per_second": 60.64,
+        "avg_ttft": 0.148,
+        "min_ttft": 0.128,
+        "max_ttft": 0.186,
+        "avg_decode_tps": 64.17,
+        "avg_duration": 0.57,
+        "avg_output_tokens": 28.2,
+        "total_tokens_generated": 169,
+        "total_time_spent": 3.42
+      },
+      "category_breakdown": {
+        "Summarization": {
+          "count": 1,
+          "avg_tps": 39.23
+        },
+        "Extraction": {
+          "count": 1,
+          "avg_tps": 45.09
+        },
+        "Paradox": {
+          "count": 1,
+          "avg_tps": 60.64
+        },
+        "Constraint": {
+          "count": 1,
+          "avg_tps": 55.19
+        },
+        "Math Logic": {
+          "count": 1,
+          "avg_tps": 48.99
+        },
+        "Safety Injection": {
+          "count": 1,
+          "avg_tps": 44.16
+        }
+      }
+    }
+  ],
+  "analysis": {
+    "readable": "```json\n{\n  \"ranking\": [\"gemma:2b\", \"phi3\", \"llama3\"],\n  \"strengths_weaknesses\": {\n    \"phi3\": {\n      \"strengths\": \"Good overall throughput (41.98 TPS), fastest TTFT (0.098s), handles complex reasoning tasks well (Math Logic: 50.02 TPS, Paradox: 55.28 TPS)\",\n      \"weaknesses\": \"Inconsistent performance (8.58-55.28 TPS range), struggles significantly with Safety Injection tasks (8.58 TPS)\"\n    },\n    \"llama3\": {\n      \"strengths\": \"Consistent performance across most categories, handles Paradox tasks relatively well (24.14 TPS)\",\n      \"weaknesses\": \"Slowest overall performance (15.69 TPS), highest TTFT (0.264s), lowest throughput across all categories\"\n    },\n    \"gemma:2b\": {\n      \"strengths\": \"Fastest overall throughput (48.88 TPS), most consistent performance (39.23-60.64 TPS range), fastest decoding (64.17 TPS), shortest average duration (0.57s)\",\n      \"weaknesses\": \"Slightly higher TTFT than phi3 (0.148s), generates fewer tokens per request (28.2 avg vs phi3's 68.3)\"\n    }\n  },\n  \"recommendations\": {\n    \"real_time_applications\": \"gemma:2b (fastest response times and high throughput)\",\n    \"complex_reasoning_tasks\": \"phi3 (excels at math, logic, and paradox problems)\",\n    \"consistent_performance\": \"gemma:2b (most stable across all categories)\",\n    \"safety_critical_applications\": \"gemma:2b (consistent performance even on safety tasks)\",\n    \"latency_sensitive_use_cases\": \"phi3 (lowest TTFT for quick first token)\"\n  },\n  \"insights\": [\n    \"Safety Injection tasks consistently show the lowest TPS across all models, suggesting these are computationally intensive\",\n    \"Paradox tasks consistently achieve the highest TPS, indicating they may be less resource-intensive\",\n    \"TTFT and decoding speed don't always correlate - phi3 has best TTFT but gemma:2b has best decode TPS\",\n    \"Smaller model (gemma:2b) outperforms larger ones in pure speed metrics despite generating shorter responses\",\n    \"All models maintained 100% success rate with the given configuration\"\n  ],\n  \"winner\": \"gemma:2b\",\n  \"winner_reason\": \"Gemma:2b demonstrates superior overall efficiency with the highest average tokens per second (48.88 TPS), most consistent performance across categories (narrow 21.41 TPS range vs phi3's 46.7 range), fastest decoding speed (64.17 TPS), and shortest average duration per request (0.57s). While it generates shorter responses on average, its speed and consistency make it the most efficient choice for most practical applications.\"\n}\n```",
+    "structured": {
+      "ranking": [
+        "gemma:2b",
+        "phi3",
+        "llama3"
+      ],
+      "strengths_weaknesses": {
+        "phi3": {
+          "strengths": "Good overall throughput (41.98 TPS), fastest TTFT (0.098s), handles complex reasoning tasks well (Math Logic: 50.02 TPS, Paradox: 55.28 TPS)",
+          "weaknesses": "Inconsistent performance (8.58-55.28 TPS range), struggles significantly with Safety Injection tasks (8.58 TPS)"
+        },
+        "llama3": {
+          "strengths": "Consistent performance across most categories, handles Paradox tasks relatively well (24.14 TPS)",
+          "weaknesses": "Slowest overall performance (15.69 TPS), highest TTFT (0.264s), lowest throughput across all categories"
+        },
+        "gemma:2b": {
+          "strengths": "Fastest overall throughput (48.88 TPS), most consistent performance (39.23-60.64 TPS range), fastest decoding (64.17 TPS), shortest average duration (0.57s)",
+          "weaknesses": "Slightly higher TTFT than phi3 (0.148s), generates fewer tokens per request (28.2 avg vs phi3's 68.3)"
+        }
+      },
+      "recommendations": {
+        "real_time_applications": "gemma:2b (fastest response times and high throughput)",
+        "complex_reasoning_tasks": "phi3 (excels at math, logic, and paradox problems)",
+        "consistent_performance": "gemma:2b (most stable across all categories)",
+        "safety_critical_applications": "gemma:2b (consistent performance even on safety tasks)",
+        "latency_sensitive_use_cases": "phi3 (lowest TTFT for quick first token)"
+      },
+      "insights": [
+        "Safety Injection tasks consistently show the lowest TPS across all models, suggesting these are computationally intensive",
+        "Paradox tasks consistently achieve the highest TPS, indicating they may be less resource-intensive",
+        "TTFT and decoding speed don't always correlate - phi3 has best TTFT but gemma:2b has best decode TPS",
+        "Smaller model (gemma:2b) outperforms larger ones in pure speed metrics despite generating shorter responses",
+        "All models maintained 100% success rate with the given configuration"
+      ],
+      "winner": "gemma:2b",
+      "winner_reason": "Gemma:2b demonstrates superior overall efficiency with the highest average tokens per second (48.88 TPS), most consistent performance across categories (narrow 21.41 TPS range vs phi3's 46.7 range), fastest decoding speed (64.17 TPS), and shortest average duration per request (0.57s). While it generates shorter responses on average, its speed and consistency make it the most efficient choice for most practical applications."
+    }
+  }
+}
